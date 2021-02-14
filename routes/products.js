@@ -18,20 +18,6 @@ router.get('/new',(req, res) => {
 // create product Route
 router.post('/',(req, res) => {
     // output name
-    const product = new Product({
-        name: req.body.name
-    })
-product.save((err, newProduct) => {
-    if (err) {
-        res.render('/products/new',{
-            product: product,
-            errorMessage:'Error creating product'
-        })
-    }else{
-        res.redirect(`products`)
-    }
+    res.send(req.body.name)
 })
-})
-
-
 module.exports = router
