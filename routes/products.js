@@ -12,12 +12,13 @@ router.get('/',(req, res) => {
 
 // New products routes
 router.get('/new',(req, res) => {
-    res.render('products/new',{products: new Product()})
+    res.render('products/new',{product: new Product()})
 })
 
 // create product Route
 router.post('/',(req, res) => {
-    res.send('Create')
+    // output name
+    res.send(req.body.name)
 })
 
 
