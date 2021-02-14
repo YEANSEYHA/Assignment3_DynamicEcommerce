@@ -16,8 +16,23 @@ router.get('/new',(req, res) => {
 })
 
 // create product Route
-router.post('/',(req, res) => {
+router.post('/', async (req, res) => {
     // output name
-    res.send(req.body.name)
+    const product = new Product({
+        name: req.body.name
+    })
+
+    try{
+        const newProduct = await product.save()
+        res.redirect(`products`)
+    }catch{
+        res.render('products/new',{
+            product: product,
+            errorMessage: 'Error creating Product'
+        })
+    }
 })
+
+
+
 module.exports = router
